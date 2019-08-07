@@ -33,6 +33,11 @@ input.terms {
   width: 20px;
 }
 
+select {
+  font-size: 1rem;
+  padding: 20px 0;
+}
+
 label {
   color: white;
 }

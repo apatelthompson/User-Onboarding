@@ -22,6 +22,13 @@ function LoginForm({ values, errors, touched }) {
         )}
         <Field type="password" name="password" placeholder="Password" />
       </div>
+      <div>
+        <Field component="select" name="role">
+          <option value="backend">Backend Dev</option>
+          <option value="frontend">Frontend Dev</option>
+          <option value="fullstack">Fullstack Dev</option>
+        </Field>
+      </div>
       <label>
         <Field
           className="terms"
@@ -37,12 +44,13 @@ function LoginForm({ values, errors, touched }) {
 }
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ email, password, name, terms }) {
+  mapPropsToValues({ email, password, name, terms, role }) {
     return {
       name: name || "",
       email: email || "",
       password: password || "",
-      terms: terms || false
+      terms: terms || false,
+      role: role || "backend"
     };
   },
 

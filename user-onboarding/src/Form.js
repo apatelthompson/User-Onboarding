@@ -7,15 +7,19 @@ function LoginForm({ values, errors, touched }) {
   return (
     <Form>
       <div>
-        {touched.name && errors.name && <p>{errors.name}</p>}
+        {touched.name && errors.name && <p className="error">{errors.name}</p>}
         <Field type="text" name="name" placeholder="Name" />
       </div>
       <div>
-        {touched.email && errors.email && <p>{errors.email}</p>}
+        {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+        )}
         <Field type="email" name="email" placeholder="Email" />
       </div>
       <div>
-        {touched.password && errors.password && <p>{errors.password}</p>}
+        {touched.password && errors.password && (
+          <p className="error">{errors.password}</p>
+        )}
         <Field type="password" name="password" placeholder="Password" />
       </div>
       <label>
@@ -27,7 +31,7 @@ function LoginForm({ values, errors, touched }) {
         />
         Terms of Service
       </label>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </Form>
   );
 }
@@ -43,6 +47,7 @@ const FormikLoginForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
+    name: Yup.string(),
     email: Yup.string()
       .email("Email not valid")
       .required("Email is required"),
@@ -52,13 +57,14 @@ const FormikLoginForm = withFormik({
     terms: Yup.boolean().required()
   }),
 
-  handleSubmit(values, { setStatus }) {
+  handleSubmit(values, { resetForm, setStatus }) {
     console.log(values);
     axios
       .post("https://reqres.in/api/users/", values)
       .then(response => {
         console.log(response.data);
         setStatus(response.data);
+        resetForm();
       })
       .catch(error => {
         console.log(error);

@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  font-family: Lato;
+  background-color: #ab4554;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+}
+
+div {
+  padding: 10px;
+}
+
+input {
+  line-height: 1.4rem;
+  width: 200px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+input.terms {
+  width: 20px;
+}
+
+select {
+  font-size: 1rem;
+  padding: 20px 0;
+}
+
+label {
+  color: white;
+}
+
+button {
+  width: 30%;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+  font-size: 1rem;
+}
